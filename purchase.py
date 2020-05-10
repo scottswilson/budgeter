@@ -24,7 +24,13 @@ class Purchases(object):
     self.data = purchases
 
   def add_purchase(self, purchase):
+    if not isinstance(purchase, Purchase):
+      raise TypeError("Can only add purchase to purchases")
     self.data.append(purchase)
+
+  def add_purchases(self, new_purchases):
+    for purchase in new_purchases.data:
+      self.add_purchase(purchase)
 
   def get_by_impl(self, func = lambda x: True):
     return Purchases([x for x in self.data if func(x)])

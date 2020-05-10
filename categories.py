@@ -1,10 +1,13 @@
 import json
+import os
 from collections import namedtuple
 
 Category = namedtuple('Category', ('label', 'known_associations', 'need'))
 
 class Categories(object):
   FP = 'categories.json'
+  TEMPLATE = 'categories-template.json'
+
   def __init__(self):
     self.data = []
     self.reload()
@@ -46,6 +49,12 @@ class Categories(object):
 
   def reload(self):
     self.data = []
+    if not os.path.exists(self.FP):
+      with open(self.TEMPLATE, 'r') as template:
+        with open(self.FP, 'w+') as f:
+          for line in template:
+            f.write(line)
+
     with open(self.FP, 'r') as f:
       for category in json.loads(f.read()):
         self.append(Category(
