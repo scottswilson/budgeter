@@ -41,17 +41,17 @@ class Purchases(object):
   def remove_category(self, label):
     return self.get_by_impl(lambda x: x.category.label != label)
 
-  def get_month(self, year, month):
+  def month(self, year, month):
     return self.get_by_impl(
       lambda x: x.date.year == year and x.date.month == month
     )
     
-  def get_needs(self):
+  def needs(self):
     return self.get_by_impl(lambda x: x.category.need)
 
-  def get_wants(self):
+  def wants(self):
     return self.get_by_impl(lambda x: not x.category.need)
     
-  def total_spent(self):
+  def sum(self):
     return sum([x.amount for x in self.data])
 

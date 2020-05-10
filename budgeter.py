@@ -30,6 +30,11 @@ savings = [
 if __name__ == '__main__':
   start_month = (2019, 12)
   end_month = (2020, 5)
+  
+  months = [start_month]
+  while(start_month != end_month):
+    start_month = increment_month(*start_month)
+    months.append(start_month)
 
   categories = Categories()
   purchases = Purchases()
@@ -53,51 +58,40 @@ if __name__ == '__main__':
   expenses = purchases.remove_category('Salary')
   expenses = expenses.remove_category('Payments')
 
-  print("Total spent: {}".format(expenses.total_spent()))
+  print("Total earned: {:10.2f}".format(-income.sum()))
+  print("Total spent:  {:10.2f}".format(expenses.sum()))
 
-  end_month = increment_month(*end_month)
-  # while(month != end_month):
-  #   monthly_incomes = income.get_month(*month)
-  #   monthly_expenses = expenses.get_month(*month)
-  #   income_total = -monthly_incomes.total_spent() + 1e-9
-  #   expenditure_total = monthly_expenses.total_spent()
-  #   wants_total = monthly_expenses.get_wants().total_spent()
-  #   needs_total = monthly_expenses.get_needs().total_spent()
-
-  #   saving_percent = (1 - expenditure_total/income_total) * 100
-
-  #   print(" Month: {}-{}".format(*month))
-  #   print(" Monthly Income:       {:8.2f} ({:.2f}% saved)".format(income_total, saving_percent))
-  #   print(" Monthly expenditures: {:8.2f} ({:.2f}% spent)".format(expenditure_total, (100 - saving_percent)))
-  #   print(" Monthly wants:        {:8.2f} ({:.2f}%)".format(wants_total, wants_total / expenditure_total * 100))
-  #   print(" Monthly needs:        {:8.2f} ({:.2f}%)".format(needs_total, needs_total / expenditure_total * 100))
-
-  #   for category in categories.data:
-  #     spent = monthly_expenses.get_category(category.label).total_spent()
-  #     if spent: 
-  #       print("{:8.2f}: {:s}".format(
-  #         spent,
-  #         category.label,
-  #       ))
-
-  #   month = increment_month(*month)
-
-  string = '{:30s}'
+  format_str = '{:>30s}'
+  format_float = '{:>30s}'
+  format_percent = '{:>30s} '
   args = []
   month = start_month
-  while(month != end_month):
-    string += (' {:10s}')
+  for month in months:
+    format_str += (' {:>10s}')
+    format_float += (' {:10.2f}')
+    format_percent += (' {:9.2f}%')
     args.append('{}/{}'.format(*month))
-    month = increment_month(*month)
-  print(string.format('Category', *args))
+
+    
+  print(format_str.format('Category', *args))
+
+  print(format_str.format(*["------"]*(len(months)+1)))
+
+  print(format_float.format("Income", *[-income.month(*month).sum() for month in months]))
+  print(format_float.format("Expenditures", *[expenses.month(*month).sum() for month in months]))
+  print(format_percent.format("% Saved", *[100*(1+expenses.month(*month).sum()/(income.month(*month).sum()+1)) for month in months]))
+  print(format_float.format("Needs", *[expenses.month(*month).needs().sum() for month in months]))
+  print(format_float.format("Wants", *[expenses.month(*month).wants().sum() for month in months]))
+  print(format_percent.format("% Needs", *[100*(expenses.month(*month).needs().sum()/(expenses.month(*month).sum())) for month in months]))
+  
+  print(format_str.format(*["-----"]*(len(months)+1)))
+
+  purchases = purchases.remove_category("Salary")
 
   for category in categories.data:
-    string = '{:30s}'
     args = []
-    month = start_month
-    while(month != end_month):
-      string += (' {:10.2f}')
-      monthly_expenses = purchases.get_month(*month)
-      args.append(monthly_expenses.get_category(category.label).total_spent())
-      month = increment_month(*month)
-    print(string.format(category.label, *args))
+    for month in months:
+      monthly_expenses = purchases.month(*month)
+      args.append(monthly_expenses.get_category(category.label).sum())
+    if not all([x == 0 for x in args]):
+      print(format_float.format(category.label, *args))

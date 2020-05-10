@@ -39,9 +39,9 @@ class Categories(object):
     output = []
     for item in self.data:
       output.append({
-        'label': item.label,
         'known_associations': item.known_associations,
         'need': item.need,
+        'label': item.label,
       })
     
     with open(self.FP, 'w+') as f:
