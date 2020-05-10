@@ -31,7 +31,6 @@ def increment_month(year, month):
   else:
     return year+1, 1
 
-
 if __name__ == '__main__':
   month = (2019, 12)
   end_month = (2020, 5)
@@ -41,16 +40,16 @@ if __name__ == '__main__':
 
   for fp in statements:
     with open(fp, 'r') as f:
-      parse_file(f, FileTypes.Statement, categories, purchases)
+      parse_file(f, parse_from_statement, categories, purchases)
 
   for fp in expenses:
     with open(fp, 'r') as f:
       next(f)
-      parse_file(f, FileTypes.ScottExpense, categories, purchases)
+      parse_file(f, parse_from_expense, categories, purchases)
 
   for fp in savings:
     with open(fp, 'r') as f:
-      parse_file(f, FileTypes.Savings, categories, purchases)
+      parse_file(f, parse_from_savings, categories, purchases)
 
   print('Parsed {} purchases!'.format(len(purchases.data)))
   purchases = purchases.remove_category('Discard')

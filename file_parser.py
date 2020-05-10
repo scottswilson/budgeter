@@ -2,11 +2,6 @@ from enum import Enum
 import re
 import datetime
 from purchase import *
-class FileTypes(Enum):
-  Statement = 0
-  ScottExpense = 1
-  Savings = 2
-
 
 def parse_file(f, type, categories, purchases):
   for line in f:
@@ -32,18 +27,10 @@ def parse_file(f, type, categories, purchases):
     purchases.add_purchase(purchase)
 
     
-def parse_line(line, type):
+def parse_line(line, parse_func):
   line = sanitize_line(line)
   line = line.split(',')
-
-  if type == FileTypes.Statement:
-    return parse_from_statement(line)
-  elif type == FileTypes.ScottExpense:
-    return parse_from_expense(line)
-  elif type == FileTypes.Savings:
-    return parse_from_savings(line)
-  else:
-    raise TypeError('Unknown file type {}'.format(type))
+  return parse_func(line)
 
 def sanitize_line(line):
   search = re.search('(".*")', line)
