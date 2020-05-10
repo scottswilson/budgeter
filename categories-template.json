@@ -1,0 +1,149 @@
+[
+  {
+    "need": true, 
+    "known_associations": [
+    ], 
+    "label": "Salary"
+  }, 
+  {
+    "need": true, 
+    "known_associations": [
+    ], 
+    "label": "Rent"
+  }, 
+  {
+    "need": true, 
+    "known_associations": [
+    ], 
+    "label": "Groceries"
+  }, 
+  {
+    "need": true, 
+    "known_associations": [
+    ], 
+    "label": "Internet"
+  }, 
+  {
+    "need": true, 
+    "known_associations": [
+    ], 
+    "label": "Utilities"
+  }, 
+  {
+    "need": true, 
+    "known_associations": [
+    ], 
+    "label": "Cell"
+  }, 
+  {
+    "need": true, 
+    "known_associations": [], 
+    "label": "Transit"
+  }, 
+  {
+    "need": true, 
+    "known_associations": [
+    ], 
+    "label": "Gas"
+  }, 
+  {
+    "need": false, 
+    "known_associations": [
+    ], 
+    "label": "EatingOut"
+  }, 
+  {
+    "need": false, 
+    "known_associations": [
+    ], 
+    "label": "Alcohol"
+  }, 
+  {
+    "need": false, 
+    "known_associations": [], 
+    "label": "Gym"
+  }, 
+  {
+    "need": false, 
+    "known_associations": [], 
+    "label": "Coffee"
+  }, 
+  {
+    "need": true, 
+    "known_associations": [], 
+    "label": "Clothing"
+  }, 
+  {
+    "need": true, 
+    "known_associations": [], 
+    "label": "RentalInsurance"
+  }, 
+  {
+    "need": true, 
+    "known_associations": [], 
+    "label": "CarInsurance"
+  }, 
+  {
+    "need": true, 
+    "known_associations": [], 
+    "label": "HealthInsurance"
+  }, 
+  {
+    "need": false, 
+    "known_associations": [], 
+    "label": "ElectronicSubscriptions"
+  }, 
+  {
+    "need": true, 
+    "known_associations": [
+    ], 
+    "label": "Haircuts"
+  }, 
+  {
+    "need": true, 
+    "known_associations": [], 
+    "label": "Parking"
+  }, 
+  {
+    "need": false, 
+    "known_associations": [
+    ], 
+    "label": "Payments"
+  }, 
+  {
+    "need": false, 
+    "known_associations": [
+    ], 
+    "label": "Entertainment"
+  }, 
+  {
+    "need": false, 
+    "known_associations": [
+    ], 
+    "label": "Vacations"
+  }, 
+  {
+    "need": false, 
+    "known_associations": [
+    ], 
+    "label": "Misc Wants"
+  }, 
+  {
+    "need": true, 
+    "known_associations": [
+    ], 
+    "label": "Misc Needs"
+  }, 
+  {
+    "need": true, 
+    "known_associations": [
+    ], 
+    "label": "Furniture"
+  }, 
+  {
+    "need": false, 
+    "known_associations": [
+    ], 
+    "label": "Discard"
+  }
+]
