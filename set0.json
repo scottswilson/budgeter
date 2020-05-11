@@ -1,0 +1,71 @@
+{
+  "files": [
+    {
+      "fp": "data/statement_jan_2020.csv", 
+      "type": "statement"
+    }, 
+    {
+      "fp": "data/statement_feb_2020.csv", 
+      "type": "statement"
+    }, 
+    {
+      "fp": "data/statement_dec_2019.csv", 
+      "type": "statement"
+    }, 
+    {
+      "fp": "data/statement_mar_2020.csv", 
+      "type": "statement"
+    }, 
+    {
+      "fp": "data/statement_apr_2020.csv", 
+      "type": "statement"
+    }, 
+    {
+      "fp": "data/expenses_jan.csv", 
+      "type": "expense"
+    }, 
+    {
+      "fp": "data/expenses_feb.csv", 
+      "type": "expense"
+    }, 
+    {
+      "fp": "data/expenses_mar.csv", 
+      "type": "expense"
+    }, 
+    {
+      "fp": "data/expenses_apr.csv", 
+      "type": "expense"
+    }, 
+    {
+      "fp": "data/savings_dec_2019.csv", 
+      "type": "statement"
+    }, 
+    {
+      "fp": "data/savings_jan_2020.csv", 
+      "type": "statement"
+    }, 
+    {
+      "fp": "data/savings_feb_2020.csv", 
+      "type": "statement"
+    }, 
+    {
+      "fp": "data/savings_mar_2020.csv", 
+      "type": "statement"
+    }, 
+    {
+      "fp": "data/savings_apr_2020.csv", 
+      "type": "statement"
+    }
+  ], 
+  "ranges": [
+    {
+      "start": "2019-12", 
+      "end": "2020-05", 
+      "category_labels": [
+        "Groceries", 
+        "Alcohol",
+        "EatingOut"
+      ]
+    }
+  ]
+}
